@@ -1,0 +1,15 @@
+# Python cruft
+*.pyc
+*.pyo
+*.py~
+.idea
+build
+dist
+files.txt
+*.egg-info
+.coverage
+coverage.xml
+
+# Mac OS X cruft
+.DS_Store
+tests/parent_group
