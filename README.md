@@ -11,3 +11,6 @@ https://github.com/nbnitin/MacOsApplication/assets/5785670/edd7edbf-1e2f-4386-88
 https://github.com/nbnitin/MacOsApplication/assets/5785670/99310f2d-2619-440b-959e-0b17af226be9
 
 
+# App Icon Generator
+https://github.com/nbnitin/MacOsApplication/assets/5785670/25ac1f0e-32df-49c8-819a-2b8224af25dc
+
