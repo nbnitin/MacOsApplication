@@ -132,7 +132,7 @@ class ViewController: NSViewController {
     func setSysPath() {
         let task = Foundation.Process()
         task.launchPath = "/usr/bin/env"
-        task.arguments = ["/bin/bash","-c","sudo eval $(/usr/libexec/path_helper -s) ; echo $PATH"]
+        task.arguments = ["/bin/bash","-c","eval $(/usr/libexec/path_helper -s) ; echo $PATH"]
         
         let outputPipe = Pipe()
         task.standardOutput = outputPipe
