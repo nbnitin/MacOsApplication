@@ -1,3 +1,5 @@
+![Screenshot 2023-08-11 at 3 26 17 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/ded188eb-8ff4-42fa-8c16-803dba10e10d)
+![Screenshot 2023-08-11 at 3 26 17 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/bbdeb6a7-5159-44d2-88db-173aa20929c8)
 # MacOsApplication
 
 # This repo is helps to show case adding buildphases to the iOS project, also example for whitelabbeling for apps.
@@ -14,3 +16,13 @@ https://github.com/nbnitin/MacOsApplication/assets/5785670/99310f2d-2619-440b-95
 # App Icon Generator
 https://github.com/nbnitin/MacOsApplication/assets/5785670/25ac1f0e-32df-49c8-819a-2b8224af25dc
 
+# Menu Screen Shot
+
+
+![Screenshot 2023-08-11 at 3 25 49 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/a92abe7a-cad5-458d-9eee-ee70660a8909)
+
+
+![Screenshot 2023-08-11 at 3 26 05 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/f99be78f-9ec4-4df9-acd4-5036e03c97b5)
+
+
+![Screenshot 2023-08-11 at 3 26 17 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/2f674c71-3467-4a20-801c-79837fb1d162)
