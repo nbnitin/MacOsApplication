@@ -1,0 +1,214 @@
+
+
+import Cocoa
+import Alamofire
+
+class ViewController: NSViewController {
+   
+    private var observation: NSKeyValueObservation?
+
+      deinit {
+        observation?.invalidate()
+      }
+
+    @IBOutlet weak var progress: NSProgressIndicator!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        // Do any additional setup after loading the view.
+        //https://file-examples.com/wp-content/storage/2017/02/zip_10MB.zip
+        //https://sample-videos.com/zip/10mb.zip
+        //"https://getsamplefiles.com/download/zip/sample-5.zip"
+        //"https://publib.boulder.ibm.com/bpcsamp/v6r1/monitoring/clipsAndTacks/download/ClipsAndTacksF1.zip"
+        let url = URL(string: "https://desktop.docker.com/mac/main/arm64/Docker.dmg")
+        
+       // let url = URL(string: "https://source.unsplash.com/random/4000x4000")!
+//            let task = URLSession.shared.dataTask(with: url!,completionHandler: {data,response,error in
+//                print(data)
+//            })
+        
+        let task = URLSession.shared.downloadTask(with: url!, completionHandler: {url, response, error in
+            
+            let documentsURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask)[0]
+           let fileURL = documentsURL.appendingPathComponent("/Docker.dmg")
+            
+            try? FileManager.default.moveItem(at: url!, to: fileURL)
+            
+            print(url)
+            print(response)
+            print(error)
+            
+        })
+
+            observation = task.progress.observe(\.fractionCompleted) { progress, _ in
+              print("progress: ", progress.fractionCompleted)
+                DispatchQueue.main.async {
+                    self.progress.doubleValue = progress.fractionCompleted * 100
+                }
+            }
+        
+        
+
+            task.resume()
+          
+       
+        
+//        Downloader.load(url: url!, to: URL(filePath: "/Users/nitinbhatia/Desktop/WhiteLabelResources/\(url!.lastPathComponent)"), completion: {})
+        
+//        let dd = DownloadTask()
+//
+//        dd.download(url: "https://desktop.docker.com/mac/main/arm64/Docker.dmg", localUrl: URL(filePath: "/Users/nitinbhatia/Desktop/WhiteLabelResources/\(url!.lastPathComponent)"), progress: {per in
+//            print(per)
+//        })
+                    
+                    
+        
+//        Downloader.load(url: url!, to: URL(filePath: "/Users/nitinbhatia/Desktop/WhiteLabelResources/\(url!.lastPathComponent)"), completion: {
+//
+//        })
+//
+//        Downloader.alm(from: url!, to: URL(filePath: "/Users/nitinbhatia/Desktop/WhiteLabelResources/\(url!.lastPathComponent)"))
+    }
+
+    override var representedObject: Any? {
+        didSet {
+        // Update the view, if already loaded.
+        }
+    }
+    
+    
+   
+
+}
+
+
+class Downloader {
+    
+    class func alm(from url: URL, to urlTo: URL) {
+        
+        let destination: DownloadRequest.Destination = { _, _ in
+//                let documentsURL = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask)[0]
+//                    let fileURL = documentsURL.appendingPathComponent("image.png")
+
+                    return (urlTo, [.removePreviousFile, .createIntermediateDirectories])
+            }
+
+        AF.download(url, to: destination).downloadProgress{progress in
+            print(progress)
+        }.response { response in
+                debugPrint(response)
+
+                if response.error == nil {
+                    //let image = UIImage(contentsOfFile: imagePath)
+                    print("success")
+                }
+            }
+        
+        
+        
+    }
+    
+    
+    class func load(url: URL, to localUrl: URL, completion: @escaping () -> ()) {
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig)
+        let request = URLRequest(url: url)
+        
+        let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                // Success
+                if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                    print("Success: \(statusCode)")
+                }
+                
+                do {
+                    try FileManager.default.copyItem(at: tempLocalUrl, to: localUrl)
+                    completion()
+                } catch (let writeError) {
+                    print("error writing file \(localUrl) : \(writeError)")
+                }
+                
+            } else {
+                print("Failure: %@", error?.localizedDescription)
+            }
+        }
+        task.progress.observe(\.fractionCompleted, changeHandler: {progress, _ in
+            print("progress: ", progress.fractionCompleted)
+        })
+        task.resume()
+        
+        
+    }
+}
+
+
+class DownloadTask: NSObject {
+    var totalDownloaded: Float = 0 {
+        didSet {
+            self.handleDownloadedProgressPercent?(totalDownloaded)
+        }
+    }
+    typealias progressClosure = ((Float) -> Void)
+    var handleDownloadedProgressPercent: progressClosure!
+    
+    private var localURL : URL!
+    
+    // MARK: - Properties
+    private var configuration: URLSessionConfiguration
+    private lazy var session: URLSession = {
+        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: .main)
+        
+        return session
+    }()
+    
+    // MARK: - Initialization
+    override init() {
+        self.configuration = URLSessionConfiguration.background(withIdentifier: "backgroundTasks")
+        
+        super.init()
+    }
+
+    func download(url: String, localUrl: URL ,progress: ((Float) -> Void)?) {
+        /// bind progress closure to View
+        self.handleDownloadedProgressPercent = progress
+        self.localURL = localUrl
+        /// handle url
+        guard let url = URL(string: url) else {
+            preconditionFailure("URL isn't true format!")
+        }
+        
+        let task = session.downloadTask(with: url)
+    
+        task.resume()
+    }
+
+}
+
+extension DownloadTask: URLSessionDownloadDelegate {
+    
+    func urlSession(_ session: URLSession,
+                    downloadTask: URLSessionDownloadTask,
+                    didWriteData bytesWritten: Int64,
+                    totalBytesWritten: Int64,
+                    totalBytesExpectedToWrite: Int64) {
+        self.totalDownloaded = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        print(downloadTask.state.rawValue)
+    }
+
+    func urlSession(_ session: URLSession,
+                    downloadTask: URLSessionDownloadTask,
+                    didFinishDownloadingTo location: URL) {
+       
+            
+            
+            print("downloaded")
+            print(location)
+            do {
+                try FileManager.default.moveItem(at: location, to: self.localURL!)
+            } catch (let writeError) {
+                print("error writing file \(self.localURL) : \(writeError)")
+            }
+        }
+    
+}
