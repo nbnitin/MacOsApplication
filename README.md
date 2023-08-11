@@ -1,5 +1,4 @@
-![Screenshot 2023-08-11 at 3 26 17 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/ded188eb-8ff4-42fa-8c16-803dba10e10d)
-![Screenshot 2023-08-11 at 3 26 17 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/bbdeb6a7-5159-44d2-88db-173aa20929c8)
+
 # MacOsApplication
 
 # This repo is helps to show case adding buildphases to the iOS project, also example for whitelabbeling for apps.
