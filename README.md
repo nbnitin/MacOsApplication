@@ -25,3 +25,15 @@ https://github.com/nbnitin/MacOsApplication/assets/5785670/25ac1f0e-32df-49c8-81
 
 
 ![Screenshot 2023-08-11 at 3 26 17 PM](https://github.com/nbnitin/MacOsApplication/assets/5785670/2f674c71-3467-4a20-801c-79837fb1d162)
+
+
+# Launch Chrome without security to avoid Cors error
+Mac
+open -n -a Google\ Chrome --args --user-data-dir=/tmp/temp_chrome_user_data_dir http://localhost:3000/ --disable-web-security (-n for new window)
+Windows
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security 
+
+# To run python server on mac
+python3 -m http.server 9000
+by this you can easily access files and other things on same network
+
