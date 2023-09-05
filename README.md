@@ -35,5 +35,5 @@ chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
 
 # To run python server on mac
 python3 -m http.server 9000
-by this you can easily access files and other things on same network
+by this you can easily access files and other things on same network it will show files and folder from which current directory this server will start, if you run this server from root directory then it will show whole system directories
 
