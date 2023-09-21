@@ -37,3 +37,11 @@ chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
 python3 -m http.server 9000
 by this you can easily access files and other things on same network it will show files and folder from which current directory this server will start, if you run this server from root directory then it will show whole system directories
 
+# To use JWTToken.sh or Use keychain wrapper storage demo
+you need to install homebrew and jq in mac
+
+home brew -> $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)
+jq -> brew install jq
+
+There are several other ways to install jq without home brew you need to search them.
+
