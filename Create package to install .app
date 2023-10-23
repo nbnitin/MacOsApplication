@@ -26,6 +26,14 @@ cd /Applications && mkdir hello11
 
 exit 0;
 
+or
+
+#!/bin/sh
+
+cd /Applications && cd Sample.app/Contents/Resources && sudo chmod -R 777 . 
+
+exit 0;
+
 
 
 one more way to do it
