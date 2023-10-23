@@ -19,6 +19,14 @@ Terminal should report:
 pkgbuild: Adding top-level postinstall script
 pkgbuild: Wrote package to com.meraki.scriptsonly.pkg
 
+ Your script must return 0 on success and any other number to denote failure. The name of the scripts must be “preinstall” and “postinstall”. You can see some sample scripts below-
+#!/bin/sh
+
+cd /Applications && mkdir hello11
+
+exit 0;
+
+
 
 one more way to do it
 productbuild --component "component-path" "install-path" "/path/to/product-output-path/packagename.pkg"
