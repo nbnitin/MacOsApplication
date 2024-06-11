@@ -8,7 +8,7 @@
 #!/bin/bash
 
 # Define variables
-PROJECT_PATH="/Users/nitin.bhatia/Documents/DaxkoProjects/ReactNative/Expo/my-app/ios/Nits.xcodeproj"
+PROJECT_PATH="/Users/nitin.bhatia/Documents/ReactNative/Expo/my-app/ios/Nits.xcodeproj"
 FOLDER_PATH="./AppIcons"
 GROUP_NAME="AppIcons"
 TARGET_NAME="Nits"
@@ -41,7 +41,7 @@ end
 # Save the changes
 project.save
 "
-cp -R $FOLDER_PATH "/Users/nitin.bhatia/Documents/DaxkoProjects/ReactNative/Expo/my-app/ios/"
-cd /Users/nitin.bhatia/Documents/DaxkoProjects/ReactNative/Expo/my-app/ios
+cp -R $FOLDER_PATH "/Users/nitin.bhatia/Documents/ReactNative/Expo/my-app/ios/"
+cd /Users/nitin.bhatia/Documents/ReactNative/Expo/my-app/ios
 pod install
 echo "Files added to Xcode project successfully."
