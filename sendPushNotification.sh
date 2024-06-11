@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Set your APNs credentials
-KEY_ID="BBZK58U6QB"
-TEAM_ID="U6YJ98JZZ5"
-BUNDLE_ID="com.daxko.coreservices.internal"
-KEY_PATH="./AuthKey_BBZK58U6QB.p8"
+KEY_ID=""
+TEAM_ID=""
+BUNDLE_ID=""
+KEY_PATH=""
 
 # Device token of the target device
-DEVICE_TOKEN="e540b465c1ced30553543d986233b54675544de150774e16ac7d2c030993fd5c"
+DEVICE_TOKEN=""
 
 # Generate the JWT token
 JWT=$(openssl ec -in "$KEY_PATH" -outform DER | openssl dgst -sha256 -binary | openssl enc -base64)
