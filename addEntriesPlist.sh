@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to your Info.plist file
-INFO_PLIST="/Users/nitin.bhatia/Documents/DaxkoProjects/ReactNative/Expo/my-app/ios/Nits/Info.plist"
+INFO_PLIST="/Users/nitin.bhatia/Documents/ReactNative/Expo/my-app/ios/Nits/Info.plist"
 
 # Function to add entries to the Info.plist file
 add_entry() {
