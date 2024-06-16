@@ -5,7 +5,6 @@ create_export_options_plist() {
     DISTRIBUTION_METHOD=$1
     TEAM_ID=$2
     OUTPUT_PATH=$3
-    SINGING_STYLE=$4
     # Create the plist content based on distribution method
     case $DISTRIBUTION_METHOD in
     
@@ -23,8 +22,6 @@ create_export_options_plist() {
     <true/>
     <key>compileBitcode</key>
     <true/>
-    <key>signingStyle</key>
-    <string>$SINGING_STYLE</string>
 </dict>
 </plist>
 EOF
@@ -38,15 +35,14 @@ EOF
 <plist version="1.0">
 <dict>
     <key>method</key>
-    <string>app-store</string>
+    <string>app-store-connect</string>
     <key>teamID</key>
     <string>$TEAM_ID</string>
     <key>uploadBitcode</key>
     <true/>
     <key>compileBitcode</key>
     <true/>
-    <key>signingStyle</key>
-    <string>$SINGING_STYLE</string>
+   
 </dict>
 </plist>
 EOF
@@ -61,8 +57,7 @@ EOF
     <string>ad-hoc</string>
     <key>teamID</key>
     <string>$TEAM_ID</string>
-    <key>signingStyle</key>
-    <string>$SINGING_STYLE</string>
+    
 </dict>
 </plist>
 EOF
@@ -77,8 +72,7 @@ EOF
     <string>enterprise</string>
     <key>teamID</key>
     <string>$TEAM_ID</string>
-    <key>signingStyle</key>
-    <string>$SINGING_STYLE</string>
+  
 </dict>
 </plist>
 EOF
@@ -96,7 +90,6 @@ EOF
 DISTRIBUTION_METHOD=$1   # e.g., app-store, ad-hoc, enterprise
 TEAM_ID=$2               # Your Apple Developer Team ID
 OUTPUT_PATH=$3           # Output path for exportOptions.plist
-SINGING_STYLE=$4         # siging style automatic / manual
 # Check if all arguments are provided
 if [ -z "$DISTRIBUTION_METHOD" ] || [ -z "$TEAM_ID" ] || [ -z "$OUTPUT_PATH" ]; then
     echo "Usage: $0 <distribution-method> <team-id> <output-path>"
@@ -105,5 +98,5 @@ if [ -z "$DISTRIBUTION_METHOD" ] || [ -z "$TEAM_ID" ] || [ -z "$OUTPUT_PATH" ]; 
 fi
 
 # Create exportOptions.plist
-create_export_options_plist $DISTRIBUTION_METHOD $TEAM_ID $OUTPUT_PATH $SINGING_STYLE
+create_export_options_plist $DISTRIBUTION_METHOD $TEAM_ID $OUTPUT_PATH 
 
