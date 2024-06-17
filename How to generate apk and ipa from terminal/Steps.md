@@ -4,8 +4,20 @@ How to generate debug APK, and ipa file without using any third party tool demo 
 ./gradlew assembleRelease --- for release apk<br/>
 ./gradlew bundleRelease --- for aab<br/>
 
-generate keystore file
-sudo keytool -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+## generate keystore file
+sudo keytool -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000<br/> 
+sudo keytool -genkey -v -keystore my-upload-key.jks -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000<br/> 
+
+## Sign aab file
+jarsigner -keystore my-upload-key.keystore -storepass nbNitin@123 -keypass nbNitin@123 app-release.aab my-key-alias<br/> 
+jarsigner -keystore my-upload-key.jks -storepass nbNitin@123 -keypass nbNitin@123 app-release.aab my-key-alias<br/> 
+
+return of both command <br/> 
+jar signed.<br/> 
+
+## To verify
+jarsigner -verify app-release.aab<br/> 
+jar verified.<br/> 
 
 you will find the (.aab) file inside output release folder and .apk in apk/debug folder
 # iOS
