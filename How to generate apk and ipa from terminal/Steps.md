@@ -21,6 +21,12 @@ jar verified.<br/>
 
 you will find the (.aab) file inside output release folder and .apk in apk/debug folder
 # iOS
+## Add Privacy Manifest File to Your Xcode Project:
+
+* Open your Xcode project.
+* Drag the PrivacyInfo.xcprivacy file into your project in the Xcode file navigator.
+* Make sure the file is included in the appropriate target by checking the target membership in the file inspector.
+
 You need to generate archive file for it first
 `xcodebuild -workspace YOUR_WORKSPACE.xcworkspace -scheme YOUR_SCHEME -configuration Release -archivePath /path/to/archive archive`<br/>
 for xcodeproj<br/>
