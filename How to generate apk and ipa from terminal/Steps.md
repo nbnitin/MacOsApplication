@@ -1,6 +1,7 @@
 How to generate debug APK, and ipa file without using any third party tool demo attached ?
 # Android
 ./gradlew assembleDebug --- for apk<br/> 
+./gradlew assembleRelease --- for release apk<br/>
 ./gradlew bundleRelease --- for aab<br/>
 
 generate keystore file
