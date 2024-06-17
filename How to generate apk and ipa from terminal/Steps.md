@@ -1,6 +1,9 @@
 How to generate debug APK, and ipa file without using any third party tool demo attached ?
 # Android
-./gradlew assembleDebug<br/>
+./gradlew assembleDebug --- for apk<br/> 
+./gradlew bundleRelease --- for aab<br/>
+
+you will find the (.aab) file inside output release folder and .apk in apk/debug folder
 # iOS
 You need to generate archive file for it first
 `xcodebuild -workspace YOUR_WORKSPACE.xcworkspace -scheme YOUR_SCHEME -configuration Release -archivePath /path/to/archive archive`<br/>
