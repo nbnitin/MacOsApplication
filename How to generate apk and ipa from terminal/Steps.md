@@ -32,7 +32,7 @@ You need to generate archive file for it first<br/>
 for xcodeproj<br/>
 `xcodebuild -project YOUR PROJECT NAME.xcodeproj -scheme YOUR SCHEME -configuration Release -archivePath /path/to archive archive`<br/>
 `xcodebuild -project SplineSample.xcodeproj -scheme SplineSample -configuration Release -archivePath sm.xcarchive archive`  <br/>
--destination 'generic/platform=iOS' if you get an error something like `Provisioning profile "iOS Team Provisioning Profile: BUNDLE ID" doesn't include the currently selected `
+-destination 'generic/platform=iOS' if you get an error something like `Provisioning profile "iOS Team Provisioning Profile: BUNDLE ID" doesn't include the currently selected `<br/>
 `xcodebuild -workspace YOUR_WORKSPACE.xcworkspace -scheme YOUR_SCHEME -configuration Release -archivePath /path/to/archive archive -destination 'generic/platform=iOS'
 `
 Generate export options plist<br/>
