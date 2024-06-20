@@ -35,6 +35,7 @@ for xcodeproj<br/>
 -destination 'generic/platform=iOS' if you get an error something like `Provisioning profile "iOS Team Provisioning Profile: BUNDLE ID" doesn't include the currently selected `<br/>
 `xcodebuild -workspace YOUR_WORKSPACE.xcworkspace -scheme YOUR_SCHEME -configuration Release -archivePath /path/to/archive archive -destination 'generic/platform=iOS'
 `
+<br/>
 Generate export options plist<br/>
 script added<br/>
 Convert archive to ipa<br/>
